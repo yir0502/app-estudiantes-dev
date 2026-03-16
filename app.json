@@ -1,5 +1,6 @@
 {
   "expo": {
+    "owner": "gestion-estudiantes-app",
     "name": "app-estudiantes",
     "slug": "app-estudiantes",
     "version": "1.0.0",
@@ -9,9 +10,11 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.fccbuap.appestudiantes"
     },
     "android": {
+      "package": "com.fccbuap.appestudiantes",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -43,6 +46,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "a5de3ed8-7f94-4f7a-9766-a123dd7b59f1"
+      }
     }
   }
 }
