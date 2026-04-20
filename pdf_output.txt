@@ -1,0 +1,10 @@
+ERROR: pdf is not a function
+TypeError: pdf is not a function
+    at run (C:\Users\dani6\Desktop\apps_negocios\app-estudiantes-dev\read_pdf.js:12:30)
+    at Object.<anonymous> (C:\Users\dani6\Desktop\apps_negocios\app-estudiantes-dev\read_pdf.js:20:1)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+    at node:internal/main/run_main_module:28:49

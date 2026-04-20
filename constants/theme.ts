@@ -5,26 +5,42 @@
 
 import { Platform } from 'react-native';
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+const BUAP_BLUE = '#003B5C';
+const BUAP_GOLD = '#FFB81C';
+const BUAP_LIGHT_BLUE = '#005483';
 
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+    text: '#111827',
+    background: '#F8FAFC',
+    tint: BUAP_BLUE,
+    accent: BUAP_GOLD,
+    icon: '#4B5563',
+    tabIconDefault: '#94A3B8',
+    tabIconSelected: BUAP_GOLD,
+    tabBarBackground: BUAP_BLUE,
+    card: '#FFFFFF',
+    headerBackground: BUAP_BLUE,
+    headerText: '#FFFFFF',
   },
   dark: {
     text: '#ECEDEE',
     background: '#151718',
-    tint: tintColorDark,
+    tint: '#fff',
+    accent: BUAP_GOLD,
     icon: '#9BA1A6',
     tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
+    tabIconSelected: BUAP_GOLD,
+    tabBarBackground: '#000000',
+    card: '#1F2937',
+    headerBackground: '#111827',
+    headerText: '#FFFFFF',
   },
+  buap: {
+    primary: BUAP_BLUE,
+    secondary: BUAP_GOLD,
+    light: BUAP_LIGHT_BLUE,
+  }
 };
 
 export const Fonts = Platform.select({

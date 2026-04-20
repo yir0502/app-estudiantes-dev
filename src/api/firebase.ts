@@ -1,8 +1,9 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { initializeApp } from "firebase/app";
-import { getReactNativePersistence, initializeAuth } from "firebase/auth";
+import * as authExports from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
+import { Platform } from "react-native";
 
 import { ENV } from "../config/env";
 
@@ -17,9 +18,16 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-export const auth = initializeAuth(app, {
-  persistence: getReactNativePersistence(AsyncStorage),
-});
+const { getAuth, initializeAuth } = authExports;
+const getReactNativePersistence = (authExports as any).getReactNativePersistence;
+
+// When running on the web, getReactNativePersistence is undefined and throws an error if called.
+// So we use getAuth for web, which automatically handles standard web persistence.
+export const auth = Platform.OS === "web"
+  ? getAuth(app)
+  : initializeAuth(app, {
+    persistence: getReactNativePersistence(AsyncStorage),
+  });
 
 export const db = getFirestore(app);
 export const storage = getStorage(app);

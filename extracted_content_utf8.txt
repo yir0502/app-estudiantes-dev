@@ -1,0 +1,37 @@
+﻿DISE├æO DE APLICACI├ôN M├ôVIL EN FLUTTER PARA GESTI├ôN DE ESTUDIANTES
+1. Organizaci├│n Personalizada de Horarios y Tareas
+La aplicaci├│n debe contar con un planificador de horarios que permite a estudiantes y
+profesores crear su propio horario ingresando manualmente las asignaturas, salones y
+horarios, brindando flexibilidad en la organizaci├│n de su tiempo. Adem├ís, incluye una
+funci├│n de gesti├│n de tareas que permite a los usuarios registrar manualmente tareas,
+trabajos y ex├ímenes, con la opci├│n de configurar recordatorios autom├íticos para cada
+actividad. Las notificaciones inteligentes aseguran que los usuarios reciban alertas
+puntuales sobre fechas l├¡mite importantes o ex├ímenes pr├│ximos, ayud├índoles a
+mantenerse organizados y cumplir con sus responsabilidades acad├⌐micas.
+2. Seguimiento de Progreso y Evaluaci├│n
+La aplicaci├│n debe permitir a los estudiantes llevar un registro manual de sus
+calificaciones, ingresando las notas obtenidas para cada materia y facilitando el
+seguimiento de su rendimiento acad├⌐mico. Adem├ís, ofrecer├í la opci├│n de generar
+reportes de progreso que proporcionan estad├¡sticas simples, brindando una visi├│n
+clara del desempe├▒o basado en las calificaciones ingresadas, lo que ayuda a los
+estudiantes a identificar ├íreas de mejora y mantenerse al tanto de su avance
+acad├⌐mico. Para esto deben identificarse los diferentes planes de estudio: anteriores
+a 2016, 2016-2023 y el 2024, junto con su mapa gr├ífico.
+3. Avisos
+La aplicaci├│n incorporar├í una funci├│n de avisos que permita enviar notificaciones
+importantes tanto a estudiantes como a profesores, que tengan instalada la
+aplicaci├│n. Estos avisos pueden incluir recordatorios sobre fechas de eventos,
+cambios en el calendario de clases, anuncios de actividades acad├⌐micas o cualquier
+otra informaci├│n relevante. Los usuarios deben recibir estos mensajes de manera
+instant├ínea, asegurando que est├⌐n siempre informados sobre eventos o
+actualizaciones cr├¡ticas en su entorno acad├⌐mico.
+4. Comunicaci├│n
+La aplicaci├│n debe contar con un espacio donde los estudiantes pueden enviar
+mensajes y formular preguntas directamente a la Coordinaci├│n de la Ingenier├¡a. Esto
+permitir├í que los usuarios planteen sus dudas de forma organizada, por asignatura o
+tema, y reciban respuestas r├ípidas, facilitando la interacci├│n en un entorno m├ís
+personalizado y accesible.
+
+-- 1 of 1 --
+
+

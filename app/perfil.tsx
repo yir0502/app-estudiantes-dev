@@ -13,6 +13,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { Picker } from "@react-native-picker/picker";
 
 import { db } from "@/src/api/firebase";
 import { UserProfile } from "@/src/domain/user";
@@ -32,6 +33,9 @@ export default function PerfilScreen() {
   const [carrera, setCarrera] = useState("");
   const [semestre, setSemestre] = useState("");
   const [areaInteres, setAreaInteres] = useState("");
+  const [planEstudio, setPlanEstudio] = useState("");
+  const [numeroEmpleado, setNumeroEmpleado] = useState("");
+  const [departamento, setDepartamento] = useState("");
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -55,6 +59,10 @@ export default function PerfilScreen() {
             setCarrera(data.carrera ?? "");
             setSemestre(data.semestre ? String(data.semestre) : "");
             setAreaInteres(data.areaInteres ?? "");
+            setPlanEstudio(data.planEstudio ?? "");
+          } else if (data.rol === "profesor") {
+            setNumeroEmpleado(data.numeroEmpleado ?? "");
+            setDepartamento(data.departamento ?? "");
           }
         }
       } catch (error) {
@@ -83,20 +91,22 @@ export default function PerfilScreen() {
       setSaving(true);
 
       const ref = doc(db, "users", targetUid);
+      const updateData: any = {
+        nombre: nombre.trim(),
+      };
 
       if (profile?.rol === "estudiante") {
-        await updateDoc(ref, {
-          nombre: nombre.trim(),
-          matricula: matricula.trim(),
-          carrera: carrera.trim(),
-          semestre: semestre.trim() ? Number(semestre.trim()) : null,
-          areaInteres: areaInteres.trim(),
-        });
-      } else {
-        await updateDoc(ref, {
-          nombre: nombre.trim(),
-        });
+        updateData.matricula = matricula.trim();
+        updateData.carrera = carrera.trim();
+        updateData.semestre = semestre.trim() ? Number(semestre.trim()) : null;
+        updateData.areaInteres = areaInteres.trim();
+        updateData.planEstudio = planEstudio;
+      } else if (profile?.rol === "profesor") {
+        updateData.numeroEmpleado = numeroEmpleado.trim();
+        updateData.departamento = departamento.trim();
       }
+
+      await updateDoc(ref, updateData);
 
       Alert.alert("Éxito", "Perfil actualizado correctamente.");
       router.back();
@@ -187,8 +197,44 @@ export default function PerfilScreen() {
               <TextInput
                 style={styles.input}
                 value={areaInteres}
-                onChangeText={setAreaInteres}
+                onChangeText={areaInteres => setAreaInteres(areaInteres)}
                 placeholder="Ej: Inteligencia Artificial"
+                placeholderTextColor="#9CA3AF"
+              />
+
+              <Text style={styles.label}>Plan de Estudios</Text>
+              <View style={styles.pickerContainer}>
+                <Picker
+                  selectedValue={planEstudio}
+                  onValueChange={(val) => setPlanEstudio(val as string)}
+                  style={styles.picker}
+                >
+                  <Picker.Item label="Seleccionar Plan..." value="" />
+                  <Picker.Item label="Anterior a 2016" value="Anterior 2016" />
+                  <Picker.Item label="2016 - 2023" value="2016-2023" />
+                  <Picker.Item label="2024" value="2024" />
+                </Picker>
+              </View>
+            </>
+          )}
+
+          {profile?.rol === "profesor" && (
+            <>
+              <Text style={styles.label}>Número de Empleado</Text>
+              <TextInput
+                style={styles.input}
+                value={numeroEmpleado}
+                onChangeText={setNumeroEmpleado}
+                placeholder="ID de profesor"
+                placeholderTextColor="#9CA3AF"
+              />
+
+              <Text style={styles.label}>Departamento</Text>
+              <TextInput
+                style={styles.input}
+                value={departamento}
+                onChangeText={setDepartamento}
+                placeholder="Ej: Ingeniería en Sistemas"
                 placeholderTextColor="#9CA3AF"
               />
             </>
@@ -257,6 +303,18 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     backgroundColor: "#FFF",
     color: "#111827",
+  },
+  pickerContainer: {
+    borderWidth: 1,
+    borderColor: "#D9DDE7",
+    borderRadius: 12,
+    backgroundColor: "#FFF",
+    overflow: "hidden",
+    marginBottom: 4,
+  },
+  picker: {
+    height: 50,
+    width: "100%",
   },
   disabledInput: {
     backgroundColor: "#F3F4F6",

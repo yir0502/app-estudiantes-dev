@@ -1,4 +1,3 @@
-import { useUserProfile } from "@/hooks/use-user-profile";
 import { auth } from "@/src/api/firebase";
 import { useAuth } from "@/src/lib/auth-context";
 import { signOut } from "firebase/auth";
@@ -17,8 +16,7 @@ import EstudianteDashboard from "@/components/dashboards/EstudianteDashboard";
 import ProfesorDashboard from "@/components/dashboards/ProfesorDashboard";
 
 export default function HomeScreen() {
-  const { user } = useAuth();
-  const { profile, loading } = useUserProfile();
+  const { user, profile, loading } = useAuth();
 
   const handleLogout = async () => {
     try {
